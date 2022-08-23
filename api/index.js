@@ -18,11 +18,48 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Country, Op } = require('./src/db.js');
+const axios = require('axios')
 
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+conn.sync({ force: false }).then(() => {
+  server.listen(3001, async () => {
+
+    //Get Data
+    const apiCountriesResponse = await axios.get('https://restcountries.com/v3/all');
+    const apiCountries = await apiCountriesResponse.data.map(c => {
+      return {
+        id: c.cca3,
+        name: c.name.common,
+        flag: c.flags[1],
+        continent: c.continents[0],
+        capital: c.capital ? c.capital[0] : 'No found Capital',
+        subregion: c.subregion,
+        area: c.area,
+        population: c.population
+      }
+    })
+    //Send DB
+    const countrydb = async () =>{
+      try {
+        const verifyBd = await Country.findAll()
+        if(verifyBd.length == 0){
+          const getData = await apiCountries
+          await Country.bulkCreate(getData);
+          console.log('creado')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const loadbd = async () =>{await countrydb()}
+
+    //Load BD
+    loadbd()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
+
+
+
+
+
