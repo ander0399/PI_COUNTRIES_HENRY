@@ -1,0 +1,39 @@
+body {
+    background-image: url("../../images/Landing.jpg");
+    background-size: 100%;
+}
+
+.land {
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 100px;
+}
+
+.button {
+    border-radius: 10px;
+    height: 30px;
+    background-color: rgba(230, 169, 77, 0);
+    shape-outside: none;
+    margin-top: 50px;
+    border-color: white;
+}
+
+.button:hover {
+    border-radius: 20px;
+    height: 40px;
+    transition: 300ms;
+    background-color: white;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: black
+  }
+  .divi {
+    margin-top: 100px;
+  }

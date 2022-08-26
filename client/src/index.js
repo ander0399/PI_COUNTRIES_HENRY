@@ -8,13 +8,13 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
-    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
