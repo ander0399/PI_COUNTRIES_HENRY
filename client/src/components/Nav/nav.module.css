@@ -1,0 +1,107 @@
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0.3em;
+    padding: 0.2em;
+    color: white;
+    justify-content: space-around;
+    align-self: flex-start;
+  }
+
+  select {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5%;
+    outline: none;
+    background-color: transparent;
+    color: white;
+  }
+
+  option {
+    color: black;
+  }
+
+  .link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0);
+    background-image: url('../../images/home.png');
+    background-color: white;
+    background-size: 100%;
+    border-radius: 5%;
+    height: 65px;
+  }
+
+  .link:hover {
+    background-image: none;
+    transition: 0.5s;
+    color: white;
+    background-color: transparent;
+  
+  }
+
+  .orderContainer {
+    display: flex;
+    margin-bottom: 2em;
+  }
+  
+  .filterContainer {
+    display: flex;
+    margin-bottom: 2em;
+  }
+  
+  .selectContainer {
+    display: flex;
+    
+  }
+
+  .activityContainer {
+    display: flex;
+    align-self: center;
+  }
+  
+  .activityContainer input {
+    margin-left: 0.5em;
+    outline: none;
+    border: 0;
+    border-radius: 25px;
+    padding: 3%;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(255, 255, 255);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 1em;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: small;
+    margin-top: 0.3em;
+    background-color: transparent;
+    color: white;
+  }
+
+  .btn:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+  
+  .link2 {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0);
+    background-image: url('../../images/activities.png'); 
+    background-size: 100%;
+    border-radius: 5%;
+    align-items: baseline;
+    height: 90px;
+  }
+  .link2:hover {
+    color: rgb(255, 255, 255);
+    transition: 0.7s;
+    background-image: none;
+  }

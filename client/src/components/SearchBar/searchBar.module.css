@@ -1,0 +1,42 @@
+.searchContainer {
+    display: inline-block;
+    flex-direction: row;
+    padding-bottom: 0.3em;
+    padding-top: 0.3em;
+    color: white;
+    justify-content: space-around;
+    align-self: center;
+}
+
+.input {
+    border-radius: 50px;
+    margin: 5px;
+    padding: 4%;
+    outline: none;
+    background-color: #eee;
+    border: 0;
+    margin-left: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(255, 255, 255);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 1em;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: small;
+    margin-top: 0.3em;
+    background-color: transparent;
+    color: white;
+}
+
+.btn:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}

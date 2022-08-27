@@ -1,0 +1,20 @@
+.findCountryContainer {
+    border: none;
+    border-radius: 4%;
+    margin: 1em;
+    width: 16%;
+    border: solid 1px #fafafa70;
+    background-color: rgba(255, 246, 246, 0.061);
+    margin-left: 120px;
+  }
+  
+  .findCountryContainer:hover {
+    background-color: rgba(255, 255, 255, 0.404);
+  }
+  .orderContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 7em;
+  }
+  

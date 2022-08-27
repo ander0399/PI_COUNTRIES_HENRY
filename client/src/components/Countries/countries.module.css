@@ -1,0 +1,30 @@
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-right: 8em;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(255, 255, 255);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 1em;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: small;
+    margin-top: 0.3em;
+    background-color: transparent;
+    color: white;
+  }
+
+  .btn:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+

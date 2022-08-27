@@ -35,7 +35,7 @@ export function getDetail(id) {
 }
 
 export function getName(name) {
-    return async function () {
+    return async function (dispatch) {
         try {
             const res = await axios.get(`${url}/countries?name=${name}`)
             return dispatch({

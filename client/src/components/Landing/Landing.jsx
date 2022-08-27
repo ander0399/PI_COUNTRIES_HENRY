@@ -2,10 +2,10 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import style from './landing.module.css'
 
-export default function Landing(){
+export function Landing(){
     return (
         <div>
-            <div className={style.land} >
+            <div className={style.container} >
                 <h1>A walk around the world!</h1>
                 <div className={style.div}>
                     <button className={style.button}>
@@ -19,3 +19,4 @@ export default function Landing(){
     )
 }
 
+export default Landing;

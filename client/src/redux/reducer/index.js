@@ -12,7 +12,7 @@ import {
 
 const inicialState = {
     countries: [],
-    countriesDetail: [],
+    countryDetail: [],
 }
 
 const orderAlpha = (a, b) => {
@@ -35,7 +35,7 @@ const rootReducer = (state = inicialState, action) => {
         case GET_DETAIL:
             return {
                 ...state,
-                countriesDetail: action.payload
+                countryDetail: action.payload
             }
         case GET_NAME:
             return {
