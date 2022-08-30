@@ -22,7 +22,7 @@ const { conn, Country, Op } = require('./src/db.js');
 const axios = require('axios')
 
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, async () => {
+  server.listen(process.env.PORT, async () => {
 
     //Get Data
     const apiCountriesResponse = await axios.get('https://restcountries.com/v3/all');
@@ -55,7 +55,7 @@ conn.sync({ force: false }).then(() => {
 
     //Load BD
     loadbd()
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log('%s listening at ',process.env.PORT); // eslint-disable-line no-console
   });
 });
 
