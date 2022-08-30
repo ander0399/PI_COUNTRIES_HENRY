@@ -11,8 +11,8 @@ import {
     SHOW_ACTIVITY
 } from './actionsName';
 
-
-const url = 'http://localhost:3001'
+const url = 'https://countriespihenry.herokuapp.com'
+const local = 'http://localhost:3001'
 
 export function getCountries() {
     return async function (dispatch) {
