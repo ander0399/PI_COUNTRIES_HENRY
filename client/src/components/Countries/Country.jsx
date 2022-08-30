@@ -2,7 +2,7 @@ import React from 'react'
 import style from './country.module.css'
 import { Link } from 'react-router-dom'
 
-export const Country = ({ id, name, flag, continent,population }) => {
+export const Country = ({ id, name, flag, continent, population }) => {
 
     // console.log("activities country: "+activities)
     return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Activity = ({ activities, countryName}) => {
 
-    console.log("activities activity: "+activities)
+    // console.log("activities activity: "+activities)
 
     if (activities && activities.length > 0) {
         return (

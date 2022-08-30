@@ -14,14 +14,6 @@ const SearchBar = () =>{
         setInput(e.target.value)
     }
 
-    // const searchHandler = ()=>{
-    //     dispatch(getName(input))
-    // }
-
-    // const resetHandler =()=>{
-    //     dispatch(getCountries())
-    // }
-
     useEffect(()=>{
         dispatch(getName(input))
     },[input])
