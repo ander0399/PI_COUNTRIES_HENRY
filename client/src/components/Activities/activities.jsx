@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import style from './activities.module.css'
 import FindCountry from '../Activities/FindCountry.jsx'
+import {createActivity, getName} from '../../redux/actions/index.js'
 
-const Activity = () => {
+const ActivityForm = () => {
     const countries = useSelector((state) => state.countries)
     const [currentPage,setCurrentPage] = useState(0)
-    const [input,setInput] = useState({
+    const [inputName, setInputName] = useState('')
+    const dispatch = useDispatch()
+    const [inputsForm,setInputsForm] = useState({
         name:'',
-        difficulty:0,
-        duration:0,
+        difficulty:'',
+        duration:'',
         season:'',
-        countriesId:[]
+        countryId:[]
     })
 
     let next = () =>{
@@ -31,11 +34,72 @@ const Activity = () => {
         }
     }
 
+    const setIdHandler = (e) => {
+        e.preventDefault()
+     
+        setInputsForm({
+            ...inputsForm,
+            [e.target.name]:inputsForm[e.target.name].concat(e.target.value)
+        })
+
+        alert('Country add!')
+    }
+    
+    const submitInputName = (e) => {
+        e.preventDefault()
+
+        setInputName(e.target.value)
+    }
+
+    useEffect(()=>{
+        dispatch(getName(inputName))
+    },[inputName])
+
+    const setDataHandler = (e) => {
+        e.preventDefault()
+
+        setInputsForm({
+            ...inputsForm,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const resetState = () =>{
+        setInputsForm({
+            name:'',
+            difficulty:0,
+            duration:0,
+            season:'',
+            countryId:[]
+        })
+        setInputName('')
+    }
+
+    const submitForm = (e) =>{
+        e.preventDefault()
+        var form = true
+        if(inputsForm['name'].length < 2){
+            form = false
+        }else if(!inputsForm['countryId'].length >= 1){
+            form = false
+        }
+
+        if(form){
+            dispatch(createActivity(inputsForm))
+            .then(() => resetState())
+            .then(() => alert('Activity Created!'))
+        }else{
+           return alert('There are empty fields, the activity cannot be created!')
+        }
+    }
+
+
     useEffect(()=>{
         setCurrentPage(0)
     },[countries])
 
-    const CountriesFilter = countries.slice(currentPage,currentPage+10)
+
+    const CountriesFilter = countries.slice(currentPage,currentPage+9)
 
     return (
         <div>
@@ -43,22 +107,27 @@ const Activity = () => {
                 <Link to='/countries' className={style.link}>
                     <p>Welcome</p>
                 </Link>
-                <form className={style.navContainer} onSubmit>
+                <form className={style.navContainer} onSubmit={(e)=>submitForm(e)}>
                     <div>
+                    <label >Name </label>
                         <input
                             className={style.input}
                             type="text"
                             placeholder='Activity name...'
                             name='name'
-                            value={input.name}
+                            value={inputsForm.name}
+                            onChange={setDataHandler}
                         />
                     </div>
                     <div className={style.difficultyContainer}>
                         <label >Difficulty</label>
                         <select
                             name="difficulty"
-                            value={input.difficulty}
+                            value={inputsForm.difficulty}
+                            id='dif'
+                            onChange={setDataHandler}
                         >
+                            <option value=''>-</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
@@ -70,8 +139,11 @@ const Activity = () => {
                         <label>Duration in hours</label>
                         <select
                             name='duration'
-                            value={input.duration}
+                            value={inputsForm.duration}
+                            id='durt'
+                            onChange={setDataHandler}
                         >
+                            <option value=''>-</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
@@ -102,8 +174,11 @@ const Activity = () => {
                         <label>Season</label>
                         <select
                             name="season"
-                            value={input.season}
+                            value={inputsForm.season}
+                            id='season'
+                            onChange={setDataHandler}
                         >
+                             <option value=''>-</option>
                             <option value='Autumn'>Autumn</option>
                             <option value='Winter'>Winter</option>
                             <option value='Spring'>Spring</option>
@@ -111,26 +186,28 @@ const Activity = () => {
                         </select>
                     </div>
                     <div className={style.countryContainer}>
-                        <label>Countries</label>
+                        <label>Countries </label>
                         <input 
+                        className={style.input}
                         type="text" 
                         placeholder='Country name...'
+                        onChange={submitInputName}
                         />
                     </div>
                     <div>
                         <input 
-                         className={style.btnInput}
+                         className={style.btn}
                          type='submit'
-                         value='add'
+                         value='Add activity'
                          />
                     </div>
                 </form>
             </div>
             <button onClick={prev} className={style.btn}>
-                {'<'}
+                {'<'} Prev
             </button>
             <button onClick={next} className={style.btn}>
-                {'>'}
+               Next {'>'} 
             </button>
             <div className={style.orderContainer}>
                 {
@@ -145,10 +222,11 @@ const Activity = () => {
                                />
                                <button
                                className={style.btn}
-                               name='country'
+                               name='countryId'
                                value={c.id}
+                               onClick={setIdHandler}
                                >
-                                Add
+                                Add Country
                                </button>
                             </div>
                         </div>
@@ -158,4 +236,4 @@ const Activity = () => {
         </div>
     )
 }
-export default Activity
+export default ActivityForm

@@ -7,18 +7,22 @@ import Activity from '../Countries/ActivityDetail.jsx'
 
 const CountryId = () =>{
 const countryDetail = useSelector((state)=>state.countryDetail)
+// const country = useSelector((state)=>state.countries)
 const dispatch = useDispatch()
 
-let  {id } = useParams()
-
+let  { id } = useParams()
+console.log(id)
 useEffect(() =>{
     dispatch(getDetail(id))
 },[id])
 
+console.log(countryDetail,'countryDetail: ')
+// console.log('country activities: '+country.activities)
+
 return (
     <div className={style.container}>
         <button className={style.btn}>
-            <Link className={style.link}>
+            <Link className={style.link} to='/countries'>
                 Back
             </Link>
         </button>
@@ -36,7 +40,7 @@ return (
             <div className={style.activityContainer}>
                 <Activity
                 countryName = {countryDetail.name}
-                activities = {countryDetail.activities}
+                activities = {countryDetail.Activities}
                 />
             </div>
         </div>

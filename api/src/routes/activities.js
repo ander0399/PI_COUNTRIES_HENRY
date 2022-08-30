@@ -4,50 +4,56 @@ const router = Router();
 
 
 //GET actividades
-router.get('/', async (req, res) => {
-    let activity = await Activity.findAll();
-    res.json(activity);
-});
+// router.get('/', async (req, res) => {
+//     let activity = await Activity.findAll();
+//     res.json(activity);
+// });
 
 
 //POST actividades
 router.post('/', async (req, res) => {
-
+   
     const { name, difficulty, duration, season, countryId } = req.body;
-    // console.log(name,difficulty,duration,season,countryId)
-    if (!name || !difficulty || !duration || !season || !countryId) {
-       
-        return res.status(404).json({ Error: 'there are empty fields' });
-    }
 
-    try {
-        const validate = await Activity.findOne({
-            where: {
-                name: name
-            }
-        })
+    // if( !name || !difficulty || !duration || !season || !countryId ){
+    //     return res.status(404).send({error:'Campos Vacios'})
+    // }
 
-        if (!validate) {
-            const addActivity = await Activity.create({
-                name: name,
-                difficulty: difficulty,
-                duration: duration,
-                season: season,
-            })
-            const findCountry = await Country.findAll({
-                where: {
-                    id: countryId
-                }
-            })
-            const assign = await addActivity.addCountry(findCountry)
-            res.json(assign)
-        } else {
-            res.status(404).json({ Error: 'the activity already exists'});
-        }
-    } catch (error) {
-        res.send(error)
-    }
-
+    const valdidateact = await Activity.findOne({
+        where: {
+          name: name,
+        },
+      });
+    
+      if (!valdidateact) {
+        const addAct = await Activity.create({
+          name: name,
+          difficulty: difficulty,
+          duration: duration,
+          season: season,
+        });
+        const countrymatch = await Country.findAll({
+          where: {
+            id: countryId,
+          },
+        });
+    
+        const resact = await addAct.addCountries(countrymatch);
+    
+        return res.send(resact);
+      }
+    
+      const countrymatch = await Country.findAll({
+        where: {
+          id: countryId,
+        },
+      });
+      // console.log(addAct)
+      // console.log(countrymatch)
+    
+      const resact = await valdidateact.addCountries(countrymatch);
+    
+      res.send(resact);
 });
 
 module.exports = router;

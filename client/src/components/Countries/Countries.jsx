@@ -36,7 +36,13 @@ const Countries = () => {
         first()
     },[countries])
 
-    const countriesFilter = countries.slice(currentPage, currentPage + 10)
+    const countriesFilter = () => {
+        if(currentPage === 0){
+            return countries.slice(currentPage, currentPage + 9)
+        }else{
+            return countries.slice(currentPage, currentPage + 10)
+        }
+    }
     return (
         <div >
             <button className={style.btn} onClick={first}> {'<<'} First Page  </button>
@@ -45,12 +51,14 @@ const Countries = () => {
             <button className={style.btn} onClick={last}> Last Page {'>>'} </button>
             <div className={style.grid}>
                 {
-                    countriesFilter.map((c) => (
+                    countriesFilter().map((c) => (
                         <Country
+                            key={c.id}
                             id={c.id}
                             flag={c.flag}
                             name={c.name}
                             continent={c.continent}
+                            population={c.population}
                         />
                     ))
                 }

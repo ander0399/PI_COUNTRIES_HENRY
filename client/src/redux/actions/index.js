@@ -49,10 +49,12 @@ export function getName(name) {
 }
 
 export function createActivity(activity) {
+    console.log('ACTIVITY: '+ activity.data)
     return async function () {
         try {
-            const res = await axios.post(`${url}/activities`, activity)
-            return res;
+            console.log('form: '+activity.data)
+            const act = await axios.post(`${url}/activities`, activity)
+            console.log('console:' +act)
         } catch (error) {
             console.log(error)
         }

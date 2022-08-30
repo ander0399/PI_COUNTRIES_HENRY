@@ -1,3 +1,36 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  color: white;
+  align-self: flex-start;
+  box-shadow: none;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+.input {
+  border-radius: 3px;
+  border: none;
+  height: 20px;
+}
+
+.difficultyContainer {
+  margin: 2em 2em 2em 2em;
+}
+.durationContainer {
+  margin: 2em 2em 2em 2em;
+}
+.seasonContainer {
+  margin: 2em 2em 2em 2em;
+}
+
+.countriesContainer {
+  margin: 2em 2em 2em 2em;
+}
+
 .findCountryContainer {
     border: none;
     border-radius: 4%;
@@ -18,3 +51,49 @@
     margin-right: 7em;
   }
   
+  .btn {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(255, 255, 255);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 1em;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: small;
+    margin-top: 0.3em;
+    background-color: transparent;
+    color: white;
+  }
+
+  .btn:hover {
+    color: black;
+    background-color: #3e8e41;
+    cursor: pointer;
+  }
+
+  .btn:active{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  }
+
+  .link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0);
+    background-image: url('../../images/home.png');
+    background-color: white;
+    background-size: 100%;
+    border-radius: 5%;
+    height: 65px;
+  }
+
+  .link:hover {
+    background-image: none;
+    transition: 0.5s;
+    color: white;
+    background-color: transparent;
+  
+  }

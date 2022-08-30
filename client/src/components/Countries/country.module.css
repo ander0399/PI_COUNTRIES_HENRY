@@ -6,6 +6,7 @@
     border: solid 1px #fafafa70;
     background-color: rgba(255, 255, 255, 0.198);
     margin-left: 125px;
+    color: white
 }
 
 .container:hover {

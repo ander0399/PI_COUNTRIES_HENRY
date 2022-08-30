@@ -22,7 +22,7 @@ const orderAlpha = (a, b) => {
 }
 
 const orderPopulation = (a, b) => {
-    return a.population - b.population
+    return b.population - a.population
 }
 
 const rootReducer = (state = inicialState, action) => {
@@ -70,7 +70,7 @@ const rootReducer = (state = inicialState, action) => {
         case SHOW_ACTIVITY:
             return {
                 ...state,
-                countries: state.countries.filter((c) =>{return c.activities.some((a) => a.name === action.payload)})
+                countries: state.countries.filter((c) =>{return c.Activities.some((a) => a.name.toLowerCase() === action.payload.toLowerCase())})
             }
 
         default: return state;

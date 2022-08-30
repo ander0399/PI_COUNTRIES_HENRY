@@ -31,7 +31,7 @@ conn.sync({ force: false }).then(() => {
         id: c.cca3,
         name: c.name.common,
         flag: c.flags[1],
-        continent: c.continents[0],
+        continent: c.region,
         capital: c.capital ? c.capital[0] : 'No found Capital',
         subregion: c.subregion,
         area: c.area,

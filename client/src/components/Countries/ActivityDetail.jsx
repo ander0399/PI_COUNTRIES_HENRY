@@ -2,7 +2,9 @@ import React from 'react'
 import style from './activityDetail.module.css'
 import { Link } from 'react-router-dom'
 
-const Activity = ({ countryName, activities }) => {
+const Activity = ({ activities, countryName}) => {
+
+    console.log("activities activity: "+activities)
 
     if (activities && activities.length > 0) {
         return (
@@ -14,11 +16,11 @@ const Activity = ({ countryName, activities }) => {
                             <th>Name</th>
                             <th>Duration(h)</th>
                             <th>Season</th>
-                            <th>Difficulty</th>
+                            <th>Diff.</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        { activities &&
                             activities.map((a) => (
                                 <tr key={a.id}>
                                     <td>{a.name}</td>
